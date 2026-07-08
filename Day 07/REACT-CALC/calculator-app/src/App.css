@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html,body,#root{
+    width:100%;
+    height:100%;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#050816;
+    position:relative;
+}
+
+/* Animated Background */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#00f7ff;
+    border-radius:50%;
+    filter:blur(180px);
+    top:-120px;
+    left:-120px;
+    animation:moveOne 8s infinite alternate ease-in-out;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#ff0088;
+    border-radius:50%;
+    filter:blur(180px);
+    right:-120px;
+    bottom:-120px;
+    animation:moveTwo 8s infinite alternate ease-in-out;
+}
+
+@keyframes moveOne{
+    to{
+        transform:translate(130px,90px);
+    }
+}
+
+@keyframes moveTwo{
+    to{
+        transform:translate(-130px,-90px);
+    }
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.calculator{
+
+    width:400px;
+
+    padding:30px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 0 20px rgba(0,255,255,.4),
+    0 0 60px rgba(255,0,170,.2);
+
+    animation:popup .8s;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+
+.calculator h1{
+
+text-align:center;
+
+margin-bottom:25px;
+
+font-size:32px;
+
+color:white;
+
+font-family:'Orbitron',sans-serif;
+
+letter-spacing:2px;
+
+}
+
+/* Display */
+
+.display{
+
+margin-bottom:25px;
+
+}
+
+.display input{
+
+width:100%;
+
+height:80px;
+
+border:none;
+
+outline:none;
+
+border-radius:20px;
+
+padding:20px;
+
+background:#0d1324;
+
+color:#00ffff;
+
+font-size:34px;
+
+text-align:right;
+
+font-family:'Orbitron',sans-serif;
+
+box-shadow:
+inset 0 0 15px rgba(0,255,255,.4),
+0 0 15px rgba(0,255,255,.2);
+
+}
+
+/* Buttons */
+
+.buttons{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:15px;
+
+}
+
+button{
+
+height:70px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+color:white;
+
+background:#151d34;
+
+box-shadow:
+
+0 0 10px rgba(255,255,255,.08);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Shine */
+
+button::before{
+
+content:"";
+
+position:absolute;
+
+width:220%;
+
+height:220%;
+
+background:linear-gradient(
+45deg,
+transparent,
+rgba(255,255,255,.4),
+transparent
+);
+
+top:-120%;
+
+left:-120%;
+
+transition:.7s;
+
+}
+
+button:hover::before{
+
+top:100%;
+left:100%;
+
+}
+
+button:hover{
+
+transform:translateY(-5px);
+
+}
+
+/* Numbers */
+
+button:not(.operator):not(.equal):not(.clear):not(.delete){
+
+background:#1c2541;
+
+}
+
+button:not(.operator):not(.equal):not(.clear):not(.delete):hover{
+
+box-shadow:
+0 0 15px #00ffff;
+
+}
+
+/* Operators */
+
+.operator{
+
+background:linear-gradient(135deg,#ff00aa,#ff5f6d);
+
+box-shadow:
+0 0 10px #ff00aa,
+0 0 25px #ff00aa;
+
+}
+
+.operator:hover{
+
+box-shadow:
+0 0 20px #ff00aa,
+0 0 45px #ff00aa;
+
+}
+
+/* Equal */
+
+.equal{
+
+background:linear-gradient(135deg,#00ff95,#00b96b);
+
+box-shadow:
+0 0 15px #00ff95,
+0 0 30px #00ff95;
+
+}
+
+.equal:hover{
+
+box-shadow:
+0 0 25px #00ff95,
+0 0 50px #00ff95;
+
+}
+
+/* Clear */
+
+.clear{
+
+background:linear-gradient(135deg,#ff3d3d,#ff7300);
+
+box-shadow:
+0 0 15px #ff3d3d;
+
+}
+
+/* Delete */
+
+.delete{
+
+background:linear-gradient(135deg,#0099ff,#00d4ff);
+
+box-shadow:
+0 0 15px #0099ff;
+
+}
+
+button:active{
+
+transform:scale(.95);
+
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+
+.calculator{
+
+width:95%;
+
+padding:20px;
+
+}
+
+.display input{
+
+font-size:28px;
+
+height:70px;
+
+}
+
+button{
+
+height:60px;
+
+font-size:20px;
+
+}
+
+}

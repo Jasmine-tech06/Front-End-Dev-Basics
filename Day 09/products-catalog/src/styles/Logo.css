@@ -1,0 +1,102 @@
+/* ===========================
+   LOGO CONTAINER
+=========================== */
+
+.logo-container{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+    transition:all .35s ease;
+    user-select:none;
+}
+
+.logo-container:hover{
+    transform:scale(1.05);
+}
+
+/* ===========================
+   LOGO IMAGE
+=========================== */
+
+.logo-image{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    transition:all .4s ease;
+}
+
+.logo-container:hover .logo-image{
+    transform:rotate(-8deg) scale(1.08);
+}
+
+/* ===========================
+   LOGO TEXT
+=========================== */
+
+.logo-text{
+    font-family:'Playfair Display', serif;
+    font-size:2rem;
+    color:var(--primary);
+    line-height:1;
+    margin:0;
+    letter-spacing:.5px;
+}
+
+.logo-text span{
+    color:var(--accent);
+}
+
+/* ===========================
+   TAGLINE
+=========================== */
+
+.logo-tagline{
+    margin-top:4px;
+    font-size:.85rem;
+    color:#777;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.logo-image{
+    width:48px;
+    height:48px;
+}
+
+.logo-text{
+    font-size:1.6rem;
+}
+
+.logo-tagline{
+    font-size:.7rem;
+}
+
+}
+
+@media(max-width:480px){
+
+.logo-container{
+    gap:10px;
+}
+
+.logo-image{
+    width:42px;
+    height:42px;
+}
+
+.logo-text{
+    font-size:1.4rem;
+}
+
+.logo-tagline{
+    display:none;
+}
+
+}

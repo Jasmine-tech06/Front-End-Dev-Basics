@@ -1,0 +1,42 @@
+.gallery{
+    padding:80px 8%;
+    background:#faf7f2;
+}
+
+.gallery-heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.gallery-heading h2{
+    font-size:40px;
+    color:#2d2d2d;
+    margin-bottom:10px;
+}
+
+.gallery-heading p{
+    color:#777;
+    font-size:17px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:18px;
+}
+
+.gallery-item img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}

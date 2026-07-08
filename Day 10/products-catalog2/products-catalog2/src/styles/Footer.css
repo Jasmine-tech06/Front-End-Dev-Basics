@@ -1,0 +1,129 @@
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+    background:#2f3d33;
+    color:#fff;
+    padding:70px 8% 25px;
+}
+
+.footer-container{
+
+    max-width:1350px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:50px;
+
+}
+
+/* ===========================
+   LEFT
+=========================== */
+
+.footer-left h2{
+
+    font-family:'Playfair Display',serif;
+    font-size:2.3rem;
+    margin-bottom:20px;
+
+}
+
+.footer-left span{
+
+    color:var(--accent);
+
+}
+
+.footer-left p{
+
+    color:#d8d8d8;
+    line-height:1.9;
+
+}
+
+/* ===========================
+   CENTER
+=========================== */
+
+.footer-center h3,
+.footer-right h3{
+
+    margin-bottom:20px;
+    color:#fff;
+
+}
+
+.footer-center ul{
+
+    padding:0;
+
+}
+
+.footer-center li{
+
+    margin-bottom:12px;
+
+}
+
+.footer-center a{
+
+    color:#ddd;
+    transition:.3s;
+
+}
+
+.footer-center a:hover{
+
+    color:var(--accent);
+    padding-left:8px;
+
+}
+
+/* ===========================
+   RIGHT
+=========================== */
+
+.footer-right p{
+
+    color:#ddd;
+    margin-bottom:12px;
+    line-height:1.7;
+
+}
+
+/* ===========================
+   BOTTOM
+=========================== */
+
+.footer-bottom{
+
+    margin-top:50px;
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:20px;
+    text-align:center;
+    color:#cfcfcf;
+    font-size:.95rem;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+    .footer{
+
+        text-align:center;
+
+    }
+
+    .footer-center a:hover{
+
+        padding-left:0;
+
+    }
+
+}

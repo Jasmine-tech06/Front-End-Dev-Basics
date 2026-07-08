@@ -1,0 +1,147 @@
+/* ===========================
+   SUCCESS OVERLAY
+=========================== */
+
+.success-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11000;
+    padding: 20px;
+    animation: fadeIn .3s ease;
+}
+
+/* ===========================
+   SUCCESS POPUP
+=========================== */
+
+.success-popup {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 25px;
+    padding: 45px 35px;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(0,0,0,.2);
+    animation: zoomIn .4s ease;
+}
+
+/* ===========================
+   SUCCESS ICON
+=========================== */
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pop .7s ease;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+.success-popup h2 {
+    color: var(--primary);
+    margin-bottom: 18px;
+    font-size: 2rem;
+}
+
+.success-message {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.product-message {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.success-message strong,
+.product-message strong {
+    color: var(--primary);
+}
+
+/* ===========================
+   DELIVERY BOX
+=========================== */
+
+.delivery-box {
+    background: #f8f6f2;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+}
+
+.delivery-box h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.delivery-box p {
+    color: #555;
+    font-size: 17px;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.success-popup .primary-btn {
+    width: 100%;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes pop {
+
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 600px) {
+
+    .success-popup {
+        padding: 35px 25px;
+    }
+
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+
+    .success-popup h2 {
+        font-size: 1.6rem;
+    }
+
+}

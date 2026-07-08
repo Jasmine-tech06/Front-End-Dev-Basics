@@ -1,0 +1,178 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f8f6f2;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* Root Colors */
+
+:root{
+
+    --primary:#4A5D4F;
+    --secondary:#D8C8B8;
+    --accent:#C89B3C;
+    --white:#ffffff;
+    --black:#1d1d1d;
+    --gray:#666;
+    --light:#f8f6f2;
+    --shadow:0 10px 30px rgba(0,0,0,0.12);
+    --radius:18px;
+    --transition:0.4s ease;
+
+}
+
+/* Common */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:'Poppins',sans-serif;
+    cursor:pointer;
+    border:none;
+    outline:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+ul{
+    list-style:none;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#ece8e2;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#8d806c;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#5e5447;
+}
+
+/* Selection */
+
+::selection{
+    background:#4A5D4F;
+    color:white;
+}
+
+/* Fade Animation */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+/* Slide Up */
+
+@keyframes slideUp{
+
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Floating */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* Zoom */
+
+@keyframes zoomIn{
+
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+/* Utility Classes */
+
+.container{
+    width:90%;
+    max-width:1350px;
+    margin:auto;
+}
+
+.section-title{
+
+    font-family:'Playfair Display',serif;
+    font-size:3rem;
+    text-align:center;
+    margin-bottom:20px;
+    color:var(--black);
+
+}
+
+.section-subtitle{
+
+    text-align:center;
+    color:var(--gray);
+    margin-bottom:50px;
+    font-size:1.05rem;
+
+}

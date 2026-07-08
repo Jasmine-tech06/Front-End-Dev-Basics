@@ -1,0 +1,38 @@
+body {
+    background: #eef4ff;
+}
+
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+    padding: 35px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.form-card,
+.table-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.table-card {
+    overflow: auto;
+}
+
+@media (max-width: 950px) {
+    .dashboard {
+        padding: 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,85 @@
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    animation:fadeIn .3s ease;
+}
+
+.delete-modal{
+    width:420px;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    animation:popUp .3s ease;
+}
+
+.warning-icon{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.delete-modal h2{
+    color:#1e293b;
+    margin-bottom:15px;
+}
+
+.delete-modal p{
+    color:#64748b;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.cancel-btn,
+.confirm-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cancel-btn{
+    background:#e2e8f0;
+}
+
+.cancel-btn:hover{
+    background:#cbd5e1;
+}
+
+.confirm-btn{
+    background:#ef4444;
+    color:white;
+}
+
+.confirm-btn:hover{
+    background:#dc2626;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes popUp{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}

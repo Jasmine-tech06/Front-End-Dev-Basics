@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon To-Do App</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+}
+
+.container{
+    width:420px;
+    background:#1e293b;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 25px cyan;
+}
+
+h2{
+    color:white;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.inputBox{
+    display:flex;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:white;
+    outline:none;
+    font-size:16px;
+}
+
+input::placeholder{
+    color:#cbd5e1;
+}
+
+#addBtn{
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    background:cyan;
+    color:black;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+#addBtn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px cyan;
+}
+
+ul{
+    margin-top:25px;
+    list-style:none;
+}
+
+li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#334155;
+    color:white;
+    margin-bottom:12px;
+    padding:12px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+li:hover{
+    transform:translateX(5px);
+    background:#475569;
+}
+
+.deleteBtn{
+    border:none;
+    background:#ef4444;
+    color:white;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.deleteBtn:hover{
+    background:#dc2626;
+    transform:scale(1.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 id="heading">🚀 My Tasks</h2>
+
+<div class="inputBox">
+<input type="text" id="task" placeholder="Add a new task">
+<button id="addBtn">Add</button>
+</div>
+
+<ul id="taskList"></ul>
+
+</div>
+
+<script>
+
+const heading=document.getElementById("heading");
+const taskInput=document.getElementById("task");
+const addButton=document.getElementById("addBtn");
+const taskList=document.getElementById("taskList");
+
+addButton.addEventListener("mouseover",function(){
+    heading.innerHTML="💻 JavaScript To-Do";
+});
+
+addButton.addEventListener("mouseout",function(){
+    heading.innerHTML="🚀 My Tasks";
+});
+
+addButton.addEventListener("click",addTask);
+
+taskInput.addEventListener("keypress",function(e){
+    if(e.key==="Enter"){
+        addTask();
+    }
+});
+
+window.onload=function(){
+
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
+
+tasks.forEach(function(task){
+    createTask(task);
+});
+
+}
+
+function addTask(){
+
+if(taskInput.value.trim()==""){
+alert("Please enter a task.");
+return;
+}
+
+createTask(taskInput.value);
+
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
+
+tasks.push(taskInput.value);
+
+localStorage.setItem("tasks",JSON.stringify(tasks));
+
+taskInput.value="";
+
+}
+
+function createTask(task){
+
+let li=document.createElement("li");
+
+let text=document.createElement("span");
+text.innerHTML="📌 "+task;
+
+let deleteBtn=document.createElement("button");
+deleteBtn.innerHTML="Delete";
+deleteBtn.className="deleteBtn";
+
+deleteBtn.addEventListener("click",function(){
+
+li.remove();
+
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
+
+tasks=tasks.filter(function(item){
+return item!==task;
+});
+
+localStorage.setItem("tasks",JSON.stringify(tasks));
+
+});
+
+li.appendChild(text);
+li.appendChild(deleteBtn);
+
+taskList.appendChild(li);
+
+}
+
+</script>
+
+</body>
+</html>

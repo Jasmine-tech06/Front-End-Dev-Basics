@@ -1,0 +1,131 @@
+.checkout-page{
+    padding:120px 8%;
+    background:#f8f8f8;
+    min-height:100vh;
+}
+
+.checkout-page h1{
+    text-align:center;
+    margin-bottom:40px;
+    color:#2d3e34;
+}
+
+.checkout-container{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:40px;
+}
+
+.customer-details,
+.order-summary{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.customer-details h2,
+.order-summary h2{
+    margin-bottom:20px;
+}
+
+.customer-details input,
+.customer-details textarea{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+}
+
+.summary-box p,
+.summary-box h3{
+    display:flex;
+    justify-content:space-between;
+    margin:18px 0;
+}
+
+.place-order-btn{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2d3e34;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.place-order-btn:hover{
+    background:#b88e2f;
+}
+
+.back-to-shop-btn{
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background:transparent;
+    color:#2d3e34;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.back-to-shop-btn:hover{
+    background:#f0f0f0;
+}
+
+.checkout-items{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:20px;
+    max-height:260px;
+    overflow-y:auto;
+}
+
+.checkout-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.checkout-item img{
+    width:55px;
+    height:55px;
+    object-fit:cover;
+    border-radius:10px;
+    flex-shrink:0;
+}
+
+.checkout-item-info{
+    flex:1;
+}
+
+.checkout-item-info h4{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.checkout-item-info p{
+    font-size:13px;
+    color:#777;
+}
+
+.checkout-item-price{
+    font-weight:600;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+    .checkout-container{
+        grid-template-columns:1fr;
+    }
+
+}
