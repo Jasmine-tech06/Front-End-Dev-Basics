@@ -1,0 +1,141 @@
+body{
+    background:#eef4ff;
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.layout{
+    display:flex;
+    min-height:100vh;
+    width:100%;
+}
+
+.dashboard{
+    flex:1;
+    padding:24px;
+    min-width:0;
+}
+
+/* ===========================
+   TOP SECTION
+=========================== */
+
+.top-section{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:25px;
+    align-items:start;
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+/* LEFT FORM */
+
+.form-card{
+    background:#fff;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+/* RIGHT ANALYTICS */
+
+.analytics-card{
+    background:#fff;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+/* THIS WILL HOLD PIE + BAR */
+
+.analytics-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.chart-card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.07);
+    min-height:390px;
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+.table-card{
+    background:#fff;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+/* ===========================
+   PAGINATION
+=========================== */
+
+.pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.pagination button{
+    padding:10px 18px;
+    border:none;
+    border-radius:10px;
+    background:#e2e8f0;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.pagination button:hover{
+    background:#2563eb;
+    color:#fff;
+}
+
+.active-page{
+    background:#2563eb !important;
+    color:#fff;
+}
+
+.pagination button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1200px){
+
+.analytics-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:1000px){
+
+.top-section{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard{
+    padding:15px;
+}
+
+}
