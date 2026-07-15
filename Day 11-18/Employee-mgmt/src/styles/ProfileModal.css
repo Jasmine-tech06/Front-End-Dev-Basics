@@ -1,0 +1,184 @@
+.profile-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 7, 18, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+    padding: 20px;
+}
+
+.profile-modal {
+    width: 560px;
+    max-width: 100%;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+    background: rgba(13, 21, 39, 0.97);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.profile-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.profile-modal-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.profile-modal-back {
+    background: transparent;
+    border: none;
+    color: #8fa7c8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.profile-modal-back:hover {
+    color: #10b981;
+}
+
+.profile-modal-close {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.profile-modal-close:hover {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+}
+
+.profile-modal-body {
+    padding: 22px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.profile-modal-body .emp-view-card {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.profile-modal-actions {
+    display: flex;
+    gap: 10px;
+    padding: 18px 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.profile-action-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    background: rgba(16, 185, 129, 0.08);
+    color: #10b981;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.profile-action-btn:hover {
+    background: rgba(16, 185, 129, 0.16);
+    transform: translateY(-2px);
+}
+
+.profile-action-btn.secondary {
+    border-color: rgba(14, 165, 233, 0.25);
+    background: rgba(14, 165, 233, 0.08);
+    color: #38bdf8;
+}
+
+.profile-action-btn.secondary:hover {
+    background: rgba(14, 165, 233, 0.16);
+}
+
+.profile-action-btn.ghost {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #94a3b8;
+    flex: 0.6;
+}
+
+.profile-action-btn.ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: none;
+}
+
+.profile-password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.profile-password-form .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-password-form label {
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+.profile-password-form input {
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.profile-password-form input:focus {
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 600px) {
+    .profile-modal {
+        width: 100%;
+        max-height: 92vh;
+    }
+    .profile-modal-actions {
+        flex-direction: column;
+    }
+    .profile-action-btn.ghost {
+        flex: 1;
+    }
+}

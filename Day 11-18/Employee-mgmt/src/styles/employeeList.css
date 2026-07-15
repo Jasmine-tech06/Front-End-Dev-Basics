@@ -1,0 +1,435 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* ==================================================
+                EMPLOYEE LIST
+================================================== */
+
+.employee-list{
+    width:100%;
+}
+
+
+/* ==================================================
+                HEADER
+================================================== */
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.table-header h2{
+
+    color:#ffffff;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.table-header p{
+
+    margin-top:6px;
+
+    color:#9fb4d6;
+
+    font-size:15px;
+
+}
+
+.employee-count{
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    color:#ffffff;
+
+    font-weight:600;
+
+    background:linear-gradient(135deg,#10b981,#34e89e);
+
+    box-shadow:
+
+        0 12px 28px rgba(45,125,255,.30);
+
+}
+
+
+/* ==================================================
+                TABLE WRAPPER
+================================================== */
+
+.table-wrapper{
+
+    overflow-x:auto;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.04);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+/* ==================================================
+                TABLE
+================================================== */
+
+table{
+
+    width:100%;
+
+    min-width:950px;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+}
+
+thead tr{
+
+    background:rgba(15,35,65,.95);
+
+}
+
+th{
+
+    padding:20px;
+
+    text-align:left;
+
+    color:#7dd3fc;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+td{
+
+    padding:20px;
+
+    color:#dbeafe;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+tbody tr{
+
+    transition:.35s;
+
+}
+
+tbody tr:hover{
+
+    background:rgba(52,232,158,.05);
+
+}
+
+
+/* ==================================================
+                EMPLOYEE
+================================================== */
+
+.employee-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    cursor:pointer;
+
+}
+
+.employee-image{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #34e89e;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 0 20px rgba(52,232,158,.20);
+
+}
+
+.employee-info:hover .employee-image{
+
+    transform:scale(1.08);
+
+}
+
+.employee-name{
+
+    margin:0;
+
+    color:#ffffff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.employee-info small{
+
+    color:#8fb3e4;
+
+}
+
+
+/* ==================================================
+                BADGE
+================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    color:#ffffff;
+
+    font-weight:600;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #10b981,
+
+            #34e89e
+
+        );
+
+}
+
+
+/* ==================================================
+                STATUS
+================================================== */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.status svg{
+
+    font-size:8px;
+
+}
+
+.active{
+
+    color:#34e89e;
+
+    background:rgba(52,232,158,.12);
+
+}
+
+
+/* ==================================================
+                ACTION BUTTONS
+================================================== */
+
+.action-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.action-buttons button{
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    color:white;
+
+}
+
+.view-btn{
+
+    background:linear-gradient(135deg,#059669,#10b981);
+
+}
+
+.edit-btn{
+
+    background:linear-gradient(135deg,#ffb347,#ff9800);
+
+}
+
+.delete-btn{
+
+    background:linear-gradient(135deg,#ff5b7f,#ff3d57);
+
+}
+
+.action-buttons button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+        0 12px 24px rgba(0,0,0,.30);
+
+}
+
+
+/* ==================================================
+                EMPTY STATE
+================================================== */
+
+.empty{
+
+    padding:80px 20px;
+
+    text-align:center;
+
+}
+
+.empty h3{
+
+    color:#ffffff;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+.empty p{
+
+    color:#9fb4d6;
+
+}
+
+
+/* ==================================================
+                SCROLLBAR
+================================================== */
+
+.table-wrapper::-webkit-scrollbar{
+
+    height:8px;
+
+}
+
+.table-wrapper::-webkit-scrollbar-thumb{
+
+    background:#34e89e;
+
+    border-radius:20px;
+
+}
+
+.table-wrapper::-webkit-scrollbar-track{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+
+/* ==================================================
+                RESPONSIVE
+================================================== */
+
+@media(max-width:900px){
+
+.table-header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.employee-count{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+}

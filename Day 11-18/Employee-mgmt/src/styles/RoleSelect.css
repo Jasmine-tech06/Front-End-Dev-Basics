@@ -1,0 +1,154 @@
+/* ==================================================
+                 ROLE SELECTION SCREEN
+================================================== */
+
+.roleselect-page {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: #030712;
+    color: #ffffff;
+}
+
+.roleselect-card {
+    position: relative;
+    width: 620px;
+    padding: 50px;
+    text-align: center;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-card);
+    z-index: 10;
+}
+
+.roleselect-back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: transparent;
+    border: none;
+    color: #8fa7c8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.roleselect-back-btn:hover {
+    color: #10b981;
+}
+
+.roleselect-card h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 4px 0;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.roleselect-card h1 span {
+    color: #10b981;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+.roleselect-card .brand-subtitle {
+    font-size: 20px;
+    color: #e2e8f0;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.roleselect-card > p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 35px;
+}
+
+.roleselect-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.roleselect-option {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 28px 24px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.roleselect-option:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.04);
+}
+
+.roleselect-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.roleselect-icon.admin {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.roleselect-icon.employee {
+    background: linear-gradient(135deg, #0ea5e9, #059669);
+}
+
+.roleselect-option h3 {
+    color: white;
+    font-size: 18px;
+    margin: 0 0 8px 0;
+}
+
+.roleselect-option p {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 18px 0;
+    min-height: 38px;
+}
+
+.roleselect-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #10b981;
+}
+
+@media (max-width: 768px) {
+    .roleselect-card {
+        width: 92%;
+        padding: 35px 22px;
+    }
+    .roleselect-options {
+        grid-template-columns: 1fr;
+    }
+    .roleselect-card h1 {
+        font-size: 28px;
+    }
+}

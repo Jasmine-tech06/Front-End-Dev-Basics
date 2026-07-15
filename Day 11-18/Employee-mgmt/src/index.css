@@ -1,0 +1,251 @@
+/* ==================================================
+                GOOGLE FONT
+================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+
+/* ==================================================
+                ROOT VARIABLES
+================================================== */
+
+:root{
+
+    /* Background */
+
+    --bg-primary:#07182d;
+    --bg-secondary:#0c2245;
+    --bg-card:rgba(255,255,255,.08);
+
+    /* Accent */
+
+    --primary:#2d7dff;
+    --primary-light:#58b8ff;
+    --success:#34e89e;
+    --danger:#ff5b7f;
+    --warning:#ffc857;
+
+    /* Text */
+
+    --text-primary:#ffffff;
+    --text-secondary:#b8c7e6;
+    --text-muted:#8394b5;
+
+    /* Borders */
+
+    --border:rgba(255,255,255,.08);
+
+    /* Radius */
+
+    --radius-sm:12px;
+    --radius-md:18px;
+    --radius-lg:28px;
+
+    /* Shadows */
+
+    --shadow-card:
+        0 12px 35px rgba(0,0,0,.30);
+
+    --shadow-glow:
+        0 0 30px rgba(45,125,255,.25);
+
+}
+
+
+/* ==================================================
+                    RESET
+================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+html,
+body,
+#root{
+
+    width:100%;
+    min-height:100%;
+
+}
+
+
+/* ==================================================
+                  BODY
+================================================== */
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07182d 0%,
+            #0b2142 45%,
+            #08162d 100%
+        );
+
+    color:var(--text-primary);
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+}
+
+
+/* ==================================================
+                GLOBAL LINKS
+================================================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+/* ==================================================
+                BUTTON RESET
+================================================== */
+
+button{
+
+    border:none;
+
+    outline:none;
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+}
+
+
+/* ==================================================
+                INPUT RESET
+================================================== */
+
+input,
+select,
+textarea{
+
+    font-family:inherit;
+
+    outline:none;
+
+}
+
+
+/* ==================================================
+                IMAGE
+================================================== */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+/* ==================================================
+                CUSTOM SCROLLBAR
+================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#061426;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+        180deg,
+        #2d7dff,
+        #34e89e
+    );
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:linear-gradient(
+        180deg,
+        #58b8ff,
+        #34e89e
+    );
+
+}
+
+
+/* ==================================================
+            TEXT SELECTION
+================================================== */
+
+::selection{
+
+    background:#34e89e;
+
+    color:#07182d;
+
+}
+
+
+/* ==================================================
+                GLASS CARD
+================================================== */
+
+.glass{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow-card);
+
+}
+
+
+/* ==================================================
+                TRANSITIONS
+================================================== */
+
+*{
+
+    transition:
+        background .3s,
+        color .3s,
+        border-color .3s,
+        box-shadow .3s,
+        transform .3s;
+
+}

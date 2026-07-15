@@ -1,0 +1,17 @@
+.brand-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.brand-logo-svg {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.2));
+    transition: all 0.3s ease;
+}
+
+.brand-logo-wrapper:hover .brand-logo-svg {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.4));
+}

@@ -1,0 +1,101 @@
+.unauthorized-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #110815 0%, #05020a 100%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.unauthorized-blob {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.12);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.unauthorized-card {
+  width: 500px;
+  max-width: 100%;
+  padding: 50px 40px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(239, 68, 68, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.lock-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #ef4444;
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
+  animation: pulseLock 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulseLock {
+  from { transform: scale(1); box-shadow: 0 0 20px rgba(239, 68, 68, 0.15); }
+  to { transform: scale(1.05); box-shadow: 0 0 35px rgba(239, 68, 68, 0.35); }
+}
+
+.unauthorized-card h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.unauthorized-card h1 span {
+  color: #ef4444;
+}
+
+.unauthorized-card p {
+  font-size: 16px;
+  color: #a0aec0;
+  line-height: 1.6;
+}
+
+.back-home-btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(239, 68, 68, 0.25);
+  transition: all 0.35s ease;
+}
+
+.back-home-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #f87171, #ef4444);
+}
+
+@media (max-width: 480px) {
+  .unauthorized-card {
+    padding: 34px 22px;
+    gap: 18px;
+  }
+}
