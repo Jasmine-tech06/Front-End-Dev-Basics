@@ -1,0 +1,144 @@
+/* ==================================================
+   LIGHT THEME OVERRIDES
+   Activated via html[data-theme="light"], toggled from
+   Settings > Appearance and persisted in localStorage.
+   Targets the shared app-shell surfaces and common card
+   patterns used across every screen.
+================================================== */
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="light"] body,
+html[data-theme="light"] .dashboard,
+html[data-theme="light"] .welcome-page,
+html[data-theme="light"] .login-page,
+html[data-theme="light"] .roleselect-page,
+html[data-theme="light"] .notfound-page,
+html[data-theme="light"] .unauthorized-page {
+  background: #f3f6fb !important;
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .sidebar {
+  background: #ffffff !important;
+  border-right: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 4px 0 20px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Glass / card surfaces used throughout the app */
+html[data-theme="light"] .glass,
+html[data-theme="light"] .chart-panel,
+html[data-theme="light"] .emp-view-card,
+html[data-theme="light"] .dept-panel,
+html[data-theme="light"] .dd-info-card,
+html[data-theme="light"] .dept-card,
+html[data-theme="light"] .dept-manager-card,
+html[data-theme="light"] .filters-bar,
+html[data-theme="light"] .form-card,
+html[data-theme="light"] .settings-card,
+html[data-theme="light"] .table-card,
+html[data-theme="light"] .sidebar-panel,
+html[data-theme="light"] .bottom-panel,
+html[data-theme="light"] .analytics-panel,
+html[data-theme="light"] .report-summary-card,
+html[data-theme="light"] .dept-member-card,
+html[data-theme="light"] .glance-tile {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Headings / primary text */
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] h5,
+html[data-theme="light"] .chart-panel h3,
+html[data-theme="light"] .glance-value,
+html[data-theme="light"] .dept-stat-value,
+html[data-theme="light"] .report-summary-value {
+  color: #0f172a !important;
+}
+
+/* Secondary / muted text */
+html[data-theme="light"] p,
+html[data-theme="light"] span,
+html[data-theme="light"] label {
+  color: inherit;
+}
+
+html[data-theme="light"] .chart-panel p,
+html[data-theme="light"] .glance-label,
+html[data-theme="light"] .dept-stat-label,
+html[data-theme="light"] .report-summary-label,
+html[data-theme="light"] .filter-field label {
+  color: #64748b !important;
+}
+
+/* Dropdowns / inputs */
+html[data-theme="light"] .premium-dropdown,
+html[data-theme="light"] .settings-select,
+html[data-theme="light"] .settings-input,
+html[data-theme="light"] .input-group,
+html[data-theme="light"] select,
+html[data-theme="light"] input[type="text"],
+html[data-theme="light"] input[type="email"],
+html[data-theme="light"] input[type="date"],
+html[data-theme="light"] input[type="number"],
+html[data-theme="light"] input[type="password"] {
+  background: #f8fafc !important;
+  color: #1e293b !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+html[data-theme="light"] .premium-dropdown option,
+html[data-theme="light"] .settings-select option {
+  background: #ffffff;
+  color: #1e293b;
+}
+
+/* Tables */
+html[data-theme="light"] table {
+  color: #1e293b;
+}
+
+html[data-theme="light"] .compact-table-wrapper th {
+  color: #0f172a !important;
+  border-bottom-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="light"] .compact-table-wrapper td {
+  border-bottom-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+/* Menu / sidebar items */
+html[data-theme="light"] .menu-card {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .menu-card.active-item {
+  background: rgba(16, 185, 129, 0.08) !important;
+  color: #059669 !important;
+}
+
+/* Modals */
+html[data-theme="light"] .details-modal,
+html[data-theme="light"] .logout-modal,
+html[data-theme="light"] .delete-modal,
+html[data-theme="light"] .profile-modal {
+  background: #ffffff !important;
+  color: #1e293b !important;
+}
+
+html[data-theme="light"] .profile-modal-header,
+html[data-theme="light"] .profile-modal-actions {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}

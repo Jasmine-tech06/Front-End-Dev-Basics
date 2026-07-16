@@ -1,0 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/*==================================================
+                    PIE CARD
+==================================================*/
+
+.pie-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    width:100%;
+
+    min-height:560px;
+
+    padding:30px;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            155deg,
+            rgba(10,22,42,.98),
+            rgba(14,33,63,.96)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(22px);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:.4s;
+
+}
+
+.pie-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(57,233,143,.25);
+
+    box-shadow:
+
+        0 35px 65px rgba(0,0,0,.50),
+
+        0 0 35px rgba(57,233,143,.12);
+
+}
+
+/*==================================================
+                BACKGROUND GLOW
+==================================================*/
+
+.pie-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    z-index:-1;
+
+    width:260px;
+
+    height:260px;
+
+    right:-120px;
+
+    top:-120px;
+
+    border-radius:50%;
+
+    background:rgba(45,125,255,.18);
+
+    filter:blur(90px);
+
+}
+
+.pie-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    z-index:-1;
+
+    width:220px;
+
+    height:220px;
+
+    left:-90px;
+
+    bottom:-90px;
+
+    border-radius:50%;
+
+    background:rgba(57,233,143,.15);
+
+    filter:blur(80px);
+
+}
+
+/*==================================================
+                HEADER
+==================================================*/
+
+.chart-header{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-bottom:22px;
+
+}
+
+.chart-header h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    font-size:25px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.chart-header h3 svg{
+
+    color:#39E98F;
+
+}
+
+.chart-header p{
+
+    color:#8ea7c8;
+
+    font-size:15px;
+
+}
+
+/*==================================================
+                PIE AREA
+==================================================*/
+
+.pie-wrapper{
+
+    position:relative;
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/*==================================================
+                CENTER LABEL
+==================================================*/
+
+.chart-center{
+
+    position:absolute;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    pointer-events:none;
+
+}
+
+.chart-center h2{
+
+    color:white;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+.chart-center span{
+
+    color:#9fb7d7;
+
+    font-size:14px;
+
+}
+
+/*==================================================
+                LEGEND
+==================================================*/
+
+.custom-legend{
+
+    margin-top:18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.legend-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 14px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.04);
+
+    transition:.3s;
+
+}
+
+.legend-row:hover{
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateX(6px);
+
+}
+
+.legend-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.legend-color{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+}
+
+.legend-row strong{
+
+    color:#39E98F;
+
+    font-size:16px;
+
+}
+
+/*==================================================
+                RECHARTS
+==================================================*/
+
+.recharts-surface{
+
+    overflow:visible;
+
+}
+
+.recharts-tooltip-wrapper{
+
+    outline:none;
+
+}
+
+.recharts-default-tooltip{
+
+    border:none !important;
+
+    border-radius:16px !important;
+
+    background:#10284d !important;
+
+    color:white !important;
+
+    box-shadow:0 0 25px rgba(0,0,0,.35);
+
+}
+
+.recharts-pie-sector{
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+.recharts-pie-sector:hover{
+
+    filter:drop-shadow(0 0 12px rgba(57,233,143,.55));
+
+}
+
+/*==================================================
+                RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+.pie-card{
+
+    min-height:auto;
+
+    padding:22px;
+
+}
+
+.chart-header h3{
+
+    font-size:22px;
+
+}
+
+.chart-center h2{
+
+    font-size:34px;
+
+}
+
+}
