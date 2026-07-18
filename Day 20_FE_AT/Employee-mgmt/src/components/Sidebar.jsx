@@ -114,7 +114,7 @@ function Sidebar({ activeMenu, setActiveMenu, isCollapsed, setIsCollapsed }) {
             <div className="active-line"></div>
             <div className="menu-glow"></div>
             <div className="menu-icon">{item.icon}</div>
-            {!isCollapsed && <span data-testid={item.id}>{item.title}</span>}
+            {!isCollapsed && <span>{item.title}</span>}
           </motion.li>
         ))}
       </ul>
@@ -132,7 +132,7 @@ function Sidebar({ activeMenu, setActiveMenu, isCollapsed, setIsCollapsed }) {
         <div className="logout-icon">
           <FaSignOutAlt />
         </div>
-        {!isCollapsed && <span data-testid="logout">Logout</span>}
+        {!isCollapsed && <span>Logout</span>}
       </motion.div>
 
       {/* Logout confirmation pop-up modal */}

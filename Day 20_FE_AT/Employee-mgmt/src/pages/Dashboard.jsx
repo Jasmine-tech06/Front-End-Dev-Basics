@@ -11,7 +11,9 @@ import {
   FaTasks,
   FaUserCheck,
   FaCircle,
-  FaCalendarCheck
+  FaCalendarCheck,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa";
 import { 
   ResponsiveContainer, 
@@ -602,30 +604,36 @@ function Dashboard({
                   onView={setSelectedEmployee}
                 />
 
-                <div className="pagination">
-                  <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                  >
-                    Previous
-                  </button>
-
-                  {[...Array(totalPages)].map((_, index) => (
+                <div className="premium-pagination-wrap">
+                  <div className="premium-pagination">
                     <button
-                      key={index}
-                      className={currentPage === index + 1 ? "active-page" : ""}
-                      onClick={() => setCurrentPage(index + 1)}
+                      className="premium-page-btn nav-btn"
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage(currentPage - 1)}
+                      aria-label="Previous page"
                     >
-                      {index + 1}
+                      <FaChevronLeft />
                     </button>
-                  ))}
 
-                  <button
-                    disabled={currentPage === totalPages || totalPages === 0}
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                  >
-                    Next
-                  </button>
+                    {[...Array(totalPages)].map((_, index) => (
+                      <button
+                        key={index}
+                        className={`premium-page-btn ${currentPage === index + 1 ? "active-page" : ""}`}
+                        onClick={() => setCurrentPage(index + 1)}
+                      >
+                        {index + 1}
+                      </button>
+                    ))}
+
+                    <button
+                      className="premium-page-btn nav-btn"
+                      disabled={currentPage === totalPages || totalPages === 0}
+                      onClick={() => setCurrentPage(currentPage + 1)}
+                      aria-label="Next page"
+                    >
+                      <FaChevronRight />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -673,145 +681,215 @@ function Dashboard({
 
             {/* 7. Admin Analytics view — the ONLY place charts live */}
             {activeMenu === "analytics" && (
-              <div className="analytics-grid">
+              <div className="analytics-page">
 
-                <div className="chart-panel glass analytics-panel">
-                  <div className="panel-header">
+                {/* TOP SECTION — Key Statistics */}
+                <div className="analytics-stats-row">
+                  <div className="analytics-stat-card">
+                    <div className="analytics-stat-icon"><FaUserCheck /></div>
                     <div>
-                      <h3>Department Distribution</h3>
-                      <p>Headcount split across departments</p>
+                      <span className="analytics-stat-value">{employees.length}</span>
+                      <span className="analytics-stat-label">Total Employees</span>
                     </div>
                   </div>
-                  <PieChartCard employees={employees} />
-                </div>
-
-                <div className="chart-panel glass analytics-panel">
-                  <div className="panel-header">
+                  <div className="analytics-stat-card">
+                    <div className="analytics-stat-icon"><FaCalendarCheck /></div>
                     <div>
-                      <h3>Employee Distribution</h3>
-                      <p>Workforce split by employment status</p>
+                      <span className="analytics-stat-value">{attendanceTrendData[attendanceTrendData.length - 1].rate}%</span>
+                      <span className="analytics-stat-label">Attendance Rate</span>
                     </div>
                   </div>
-                  <div style={{ height: "260px", width: "100%" }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={employeeStatusData}
-                          dataKey="value"
-                          nameKey="name"
-                          innerRadius={60}
-                          outerRadius={90}
-                          paddingAngle={4}
-                          strokeWidth={3}
-                          stroke="#0f172a"
-                          animationDuration={900}
-                          animationEasing="ease-out"
-                        >
-                          {employeeStatusData.map((entry, index) => (
-                            <Cell key={index} fill={STATUS_COLORS[entry.name] || "#8b5cf6"} />
-                          ))}
-                        </Pie>
-                        <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} />
-                        <Legend wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }} />
-                      </PieChart>
-                    </ResponsiveContainer>
+                  <div className="analytics-stat-card">
+                    <div className="analytics-stat-icon"><FaBuilding /></div>
+                    <div>
+                      <span className="analytics-stat-value">{departmentOptions.length}</span>
+                      <span className="analytics-stat-label">Active Departments</span>
+                    </div>
+                  </div>
+                  <div className="analytics-stat-card">
+                    <div className="analytics-stat-icon"><FaArrowRight style={{ transform: "rotate(-45deg)" }} /></div>
+                    <div>
+                      <span className="analytics-stat-value">
+                        {performanceData.length > 0 ? Math.round(performanceData.reduce((s, d) => s + d.score, 0) / performanceData.length) : 0}%
+                      </span>
+                      <span className="analytics-stat-label">Monthly Performance</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="chart-panel glass analytics-panel">
-                  <div className="panel-header">
-                    <div>
-                      <h3>Attendance Trend</h3>
-                      <p>Weekly check-in levels trend</p>
+                {/* MIDDLE SECTION — Growth & Attendance */}
+                <h3 className="analytics-section-title">Growth &amp; Attendance</h3>
+                <div className="analytics-grid analytics-grid-2">
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Employee Growth</h3>
+                        <p>New hires onboarded per month</p>
+                      </div>
+                    </div>
+                    <div style={{ height: "260px", width: "100%" }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={hiringTrendData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                          <XAxis dataKey="month" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
+                          <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} allowDecimals={false} />
+                          <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} cursor={{ fill: "rgba(16,185,129,0.04)" }} />
+                          <Bar dataKey="hires" name="New Hires" fill="#10b981" radius={[8, 8, 0, 0]} maxBarSize={32} animationDuration={900} animationEasing="ease-out" />
+                        </BarChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
-                  <div style={{ height: "260px", width: "100%" }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart data={attendanceTrendData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                        <defs>
-                          <linearGradient id="attendGradAnalytics" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.35}/>
-                            <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                        <XAxis dataKey="day" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
-                        <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} domain={[90, 100]} />
-                        <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} />
-                        <Area type="monotone" dataKey="rate" name="Attendance %" stroke="#10b981" strokeWidth={2.5} fillOpacity={1} fill="url(#attendGradAnalytics)" animationDuration={900} animationEasing="ease-out" />
-                      </AreaChart>
-                    </ResponsiveContainer>
+
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Attendance Trend</h3>
+                        <p>Weekly check-in levels trend</p>
+                      </div>
+                    </div>
+                    <div style={{ height: "260px", width: "100%" }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={attendanceTrendData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                          <defs>
+                            <linearGradient id="attendGradAnalytics" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#10b981" stopOpacity={0.35}/>
+                              <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                            </linearGradient>
+                          </defs>
+                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                          <XAxis dataKey="day" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
+                          <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} domain={[90, 100]} />
+                          <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} />
+                          <Area type="monotone" dataKey="rate" name="Attendance %" stroke="#10b981" strokeWidth={2.5} fillOpacity={1} fill="url(#attendGradAnalytics)" animationDuration={900} animationEasing="ease-out" />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
                   </div>
                 </div>
 
-                <div className="chart-panel glass analytics-panel">
-                  <div className="panel-header">
-                    <div>
-                      <h3>Monthly Hiring Trend</h3>
-                      <p>New hires onboarded per month</p>
+                {/* BOTTOM SECTION — Distribution & Performance */}
+                <h3 className="analytics-section-title">Distribution &amp; Performance</h3>
+                <div className="analytics-grid">
+
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Department Distribution</h3>
+                        <p>Headcount split across departments</p>
+                      </div>
+                    </div>
+                    <PieChartCard employees={employees} />
+                  </div>
+
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Employee Distribution</h3>
+                        <p>Workforce split by employment status</p>
+                      </div>
+                    </div>
+                    <div style={{ height: "260px", width: "100%" }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={employeeStatusData}
+                            dataKey="value"
+                            nameKey="name"
+                            innerRadius={60}
+                            outerRadius={90}
+                            paddingAngle={4}
+                            strokeWidth={3}
+                            stroke="#0f172a"
+                            animationDuration={900}
+                            animationEasing="ease-out"
+                          >
+                            {employeeStatusData.map((entry, index) => (
+                              <Cell key={index} fill={STATUS_COLORS[entry.name] || "#8b5cf6"} />
+                            ))}
+                          </Pie>
+                          <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} />
+                          <Legend wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }} />
+                        </PieChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
-                  <div style={{ height: "260px", width: "100%" }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={hiringTrendData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                        <XAxis dataKey="month" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
-                        <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} allowDecimals={false} />
-                        <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} cursor={{ fill: "rgba(16,185,129,0.04)" }} />
-                        <Bar dataKey="hires" name="New Hires" fill="#10b981" radius={[8, 8, 0, 0]} maxBarSize={32} animationDuration={900} animationEasing="ease-out" />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
 
-                <div className="chart-panel glass analytics-panel">
-                  <div className="panel-header">
-                    <div>
-                      <h3>Leave Statistics</h3>
-                      <p>Leave requests by status</p>
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Leave Analytics</h3>
+                        <p>Leave requests by status</p>
+                      </div>
+                    </div>
+                    <div style={{ height: "260px", width: "100%" }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={leaveStatsData} layout="vertical" margin={{ top: 10, right: 20, left: 10, bottom: 0 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
+                          <XAxis type="number" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} allowDecimals={false} />
+                          <YAxis type="category" dataKey="name" tick={{ fill: "#94a3b8", fontSize: 12 }} axisLine={false} tickLine={false} width={80} />
+                          <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} cursor={{ fill: "rgba(16,185,129,0.04)" }} />
+                          <Bar dataKey="value" name="Requests" radius={[0, 8, 8, 0]} maxBarSize={22} animationDuration={900} animationEasing="ease-out">
+                            {leaveStatsData.map((entry, index) => (
+                              <Cell key={index} fill={entry.name === "Approved" ? "#10b981" : entry.name === "Rejected" ? "#f43f5e" : "#fbbf24"} />
+                            ))}
+                          </Bar>
+                        </BarChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
-                  <div style={{ height: "260px", width: "100%" }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={leaveStatsData} layout="vertical" margin={{ top: 10, right: 20, left: 10, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
-                        <XAxis type="number" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} allowDecimals={false} />
-                        <YAxis type="category" dataKey="name" tick={{ fill: "#94a3b8", fontSize: 12 }} axisLine={false} tickLine={false} width={80} />
-                        <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} cursor={{ fill: "rgba(16,185,129,0.04)" }} />
-                        <Bar dataKey="value" name="Requests" radius={[0, 8, 8, 0]} maxBarSize={22} animationDuration={900} animationEasing="ease-out">
-                          {leaveStatsData.map((entry, index) => (
-                            <Cell key={index} fill={entry.name === "Approved" ? "#10b981" : entry.name === "Rejected" ? "#f43f5e" : "#fbbf24"} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
 
-                <div className="chart-panel glass analytics-panel">
-                  <div className="panel-header">
-                    <div>
-                      <h3>Performance Overview</h3>
-                      <p>Composite score by department</p>
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Performance Analytics</h3>
+                        <p>Composite score by department</p>
+                      </div>
+                    </div>
+                    <div style={{ height: "260px", width: "100%" }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={performanceData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                          <XAxis dataKey="name" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
+                          <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
+                          <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} cursor={{ fill: "rgba(16,185,129,0.04)" }} />
+                          <Bar dataKey="score" name="Score" radius={[8, 8, 0, 0]} maxBarSize={32} animationDuration={900} animationEasing="ease-out">
+                            {performanceData.map((entry, index) => (
+                              <Cell key={index} fill={["#10b981", "#0ea5e9", "#8b5cf6", "#fbbf24", "#f43f5e", "#34e89e"][index % 6]} />
+                            ))}
+                          </Bar>
+                        </BarChart>
+                      </ResponsiveContainer>
                     </div>
                   </div>
-                  <div style={{ height: "260px", width: "100%" }}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={performanceData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                        <XAxis dataKey="name" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
-                        <YAxis tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
-                        <Tooltip contentStyle={{ background: "#0d1527", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", color: "white", fontSize: "12px" }} cursor={{ fill: "rgba(16,185,129,0.04)" }} />
-                        <Bar dataKey="score" name="Score" radius={[8, 8, 0, 0]} maxBarSize={32} animationDuration={900} animationEasing="ease-out">
-                          {performanceData.map((entry, index) => (
-                            <Cell key={index} fill={["#10b981", "#0ea5e9", "#8b5cf6", "#fbbf24", "#f43f5e", "#34e89e"][index % 6]} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
 
+                  <div className="chart-panel glass analytics-panel">
+                    <div className="panel-header">
+                      <div>
+                        <h3>Monthly Summary</h3>
+                        <p>This month at a glance</p>
+                      </div>
+                    </div>
+                    <div className="monthly-summary-list">
+                      <div className="monthly-summary-item">
+                        <span>New Hires</span>
+                        <strong>{hiringTrendData[hiringTrendData.length - 1].hires}</strong>
+                      </div>
+                      <div className="monthly-summary-item">
+                        <span>Avg Attendance</span>
+                        <strong>{Math.round(attendanceTrendData.reduce((s, d) => s + d.rate, 0) / attendanceTrendData.length)}%</strong>
+                      </div>
+                      <div className="monthly-summary-item">
+                        <span>Pending Leaves</span>
+                        <strong>{leaveStatsData.find(l => l.name === "Pending")?.value || 0}</strong>
+                      </div>
+                      <div className="monthly-summary-item">
+                        <span>Departments Active</span>
+                        <strong>{departmentOptions.length}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             )}
 
@@ -874,8 +952,18 @@ function Dashboard({
                   </button>
                 </div>
 
-                <div className="compact-table-wrapper">
+                <div className="compact-table-wrapper attendance-table-wrapper">
                   <table>
+                    <colgroup>
+                      <col style={{ width: "22%" }} />
+                      <col style={{ width: "12%" }} />
+                      <col style={{ width: "13%" }} />
+                      <col style={{ width: "12%" }} />
+                      <col style={{ width: "12%" }} />
+                      <col style={{ width: "13%" }} />
+                      <col style={{ width: "10%" }} />
+                      <col style={{ width: "12%" }} />
+                    </colgroup>
                     <thead>
                       <tr>
                         <th>Employee</th>
@@ -903,11 +991,11 @@ function Dashboard({
                               <td>
                                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                   <img src={emp.image} alt={emp.name} className="table-avatar" onError={(e) => e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(emp.name || "User") + "&background=10b981&color=fff"} />
-                                  <span style={{ color: "white", fontWeight: "600" }}>{emp.name}</span>
+                                  <span className="ellipsis-cell" style={{ color: "white", fontWeight: "600" }}>{emp.name}</span>
                                 </div>
                               </td>
-                              <td>{emp.employeeId || emp.id}</td>
-                              <td>{emp.department || "—"}</td>
+                              <td className="ellipsis-cell">{emp.employeeId || emp.id}</td>
+                              <td className="ellipsis-cell">{emp.department || "—"}</td>
                               <td>{record.checkIn}</td>
                               <td>{record.checkOut}</td>
                               <td>{record.workingHours}</td>
@@ -926,28 +1014,34 @@ function Dashboard({
                 </div>
 
                 {attendanceTotalPages > 1 && (
-                  <div className="pagination-controls" style={{ marginTop: "20px" }}>
-                    <button
-                      disabled={attendancePage === 1}
-                      onClick={() => setAttendancePage(attendancePage - 1)}
-                    >
-                      Previous
-                    </button>
-                    {[...Array(attendanceTotalPages)].map((_, index) => (
+                  <div className="premium-pagination-wrap">
+                    <div className="premium-pagination">
                       <button
-                        key={index}
-                        className={attendancePage === index + 1 ? "active-page" : ""}
-                        onClick={() => setAttendancePage(index + 1)}
+                        className="premium-page-btn nav-btn"
+                        disabled={attendancePage === 1}
+                        onClick={() => setAttendancePage(attendancePage - 1)}
+                        aria-label="Previous page"
                       >
-                        {index + 1}
+                        <FaChevronLeft />
                       </button>
-                    ))}
-                    <button
-                      disabled={attendancePage === attendanceTotalPages}
-                      onClick={() => setAttendancePage(attendancePage + 1)}
-                    >
-                      Next
-                    </button>
+                      {[...Array(attendanceTotalPages)].map((_, index) => (
+                        <button
+                          key={index}
+                          className={`premium-page-btn ${attendancePage === index + 1 ? "active-page" : ""}`}
+                          onClick={() => setAttendancePage(index + 1)}
+                        >
+                          {index + 1}
+                        </button>
+                      ))}
+                      <button
+                        className="premium-page-btn nav-btn"
+                        disabled={attendancePage === attendanceTotalPages}
+                        onClick={() => setAttendancePage(attendancePage + 1)}
+                        aria-label="Next page"
+                      >
+                        <FaChevronRight />
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

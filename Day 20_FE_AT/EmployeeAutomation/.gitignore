@@ -1,0 +1,9 @@
+target/
+test-output/
+screenshots/*.png
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/

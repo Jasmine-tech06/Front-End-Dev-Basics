@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  Single suite, single test, single browser session.
+  preserve-order="true" (the default) guarantees the classes run in
+  exactly the order listed below, which is the required end-to-end flow:
+
+    Welcome -> Role Selection -> Admin Login -> Admin Dashboard ->
+    Admin Employee Management -> Admin Search -> Admin Analytics/Other ->
+    Admin Profile/Settings -> Admin Logout -> Employee Login ->
+    Employee Dashboard -> Employee Profile -> Employee Basic Features ->
+    Employee Logout -> End-to-End Sanity Check
+-->
+<suite name="EmployeeAutomationSuite" verbose="1" thread-count="1" parallel="false">
+
+    <listeners>
+        <listener class-name="com.employee.automation.listeners.TestListener"/>
+    </listeners>
+
+    <test name="EmployeeManagementSystem-E2E" preserve-order="true">
+        <classes>
+            <class name="com.employee.automation.tests.T01_WelcomeTest"/>
+            <class name="com.employee.automation.tests.T02_RoleSelectionTest"/>
+            <class name="com.employee.automation.tests.T03_AdminLoginTest"/>
+            <class name="com.employee.automation.tests.T04_AdminDashboardTest"/>
+            <class name="com.employee.automation.tests.T05_AdminEmployeeManagementTest"/>
+            <class name="com.employee.automation.tests.T06_AdminSearchTest"/>
+            <class name="com.employee.automation.tests.T07_AdminAnalyticsTest"/>
+            <class name="com.employee.automation.tests.T08_AdminProfileTest"/>
+            <class name="com.employee.automation.tests.T09_AdminLogoutTest"/>
+            <class name="com.employee.automation.tests.T10_EmployeeLoginTest"/>
+            <class name="com.employee.automation.tests.T11_EmployeeDashboardTest"/>
+            <class name="com.employee.automation.tests.T12_EmployeeProfileTest"/>
+            <class name="com.employee.automation.tests.T13_EmployeeBasicFeaturesTest"/>
+            <class name="com.employee.automation.tests.T14_EmployeeLogoutTest"/>
+            <class name="com.employee.automation.tests.T15_EndToEndFlowTest"/>
+        </classes>
+    </test>
+
+</suite>

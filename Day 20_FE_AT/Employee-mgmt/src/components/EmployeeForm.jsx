@@ -98,7 +98,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaUser />
             <input
-              id="employeeName"
               type="text"
               name="name"
               placeholder="Employee Name"
@@ -113,7 +112,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaIdBadge />
             <input
-              id="employeeId"
               type="text"
               name="employeeId"
               placeholder="e.g. EMP-1024 (optional)"
@@ -128,7 +126,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaEnvelope />
             <input
-              id="employeeEmail"
               type="email"
               name="email"
               placeholder="Employee Email"
@@ -143,7 +140,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaPhone />
             <input
-              id="employeePhone"
               type="text"
               name="phone"
               placeholder="e.g. +91 98765 43210"
@@ -159,7 +155,6 @@ function EmployeeForm({
             <FaBuilding />
             {departmentOptions.length > 0 ? (
               <select
-                id="employeeDepartment"
                 name="department"
                 value={employee.department}
                 onChange={handleChange}
@@ -174,7 +169,6 @@ function EmployeeForm({
               </select>
             ) : (
               <input
-                 id="employeeDepartment"
                 type="text"
                 name="department"
                 placeholder="e.g. IT (no departments recorded yet)"
@@ -191,7 +185,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaBriefcase />
             <input
-              id="employeeRole"
               type="text"
               name="role"
               placeholder="e.g. Software Engineer"
@@ -206,7 +199,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaBriefcase />
             <input
-              id='employeeDesignation'
               type="text"
               name="designation"
               placeholder="e.g. Senior / Team Lead"
@@ -221,7 +213,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaMoneyBillWave />
             <input
-              id="employeeSalary"
               type="number"
               name="salary"
               placeholder="Monthly salary"
@@ -237,7 +228,6 @@ function EmployeeForm({
           <div className="input-group select-group">
             <FaToggleOn />
             <select
-              id="employeeStatus"
               name="status"
               value={employee.status}
               onChange={handleChange}
@@ -256,7 +246,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaCalendarAlt />
             <input
-               id="joiningDate"
               type="date"
               name="joiningDate"
               value={employee.joiningDate}
@@ -270,7 +259,6 @@ function EmployeeForm({
           <div className="input-group">
             <FaImage />
             <input
-              id="employeeImage"
               type="text"
               name="image"
               placeholder="Paste image URL"
@@ -284,7 +272,6 @@ function EmployeeForm({
       <div className="form-footer" style={{ display: "flex", gap: "10px", width: "100%" }}>
         {editEmployee && onCancelEdit && (
           <motion.button
-            id="cancelEditBtn"
             type="button"
             onClick={() => {
               setEmployee(emptyEmployee);
@@ -308,7 +295,6 @@ function EmployeeForm({
 
         {!editEmployee && (
           <motion.button
-            id="resetBtn"
             type="button"
             onClick={() => setEmployee(emptyEmployee)}
             whileHover={{ scale: 1.03 }}
@@ -328,7 +314,6 @@ function EmployeeForm({
         )}
 
         <motion.button
-           id="saveEmployeeBtn"
           type="submit"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: .97 }}

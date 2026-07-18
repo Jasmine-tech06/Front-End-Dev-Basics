@@ -179,7 +179,6 @@ function Login() {
         {!preselectedRole ? (
           <div className="role-selector">
             <button
-              id="adminRole"
               type="button"
               className={`role-btn ${role === "admin" ? "active" : ""}`}
               onClick={() => setRole("admin")}
@@ -187,7 +186,6 @@ function Login() {
               <FaUserShield /> Admin
             </button>
             <button
-              id="employeeRole"
               type="button"
               className={`role-btn ${role === "employee" ? "active" : ""}`}
               onClick={() => setRole("employee")}
@@ -211,7 +209,6 @@ function Login() {
             <div className="login-input-group">
               <FaEnvelope className="input-icon" />
               <input
-                id="email"
                 type="email"
                 placeholder={role === "admin" ? "admin@decornest.com" : "employee@example.com"}
                 value={email}
@@ -226,7 +223,6 @@ function Login() {
             <div className="login-input-group">
               <FaLock className="input-icon" />
               <input
-                id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 value={password}
@@ -262,7 +258,6 @@ function Login() {
           </div>
 
           <motion.button
-            id="loginBtn"
             type="submit"
             className="login-submit-btn"
             disabled={loading}
