@@ -51,6 +51,41 @@ public class EmployeeManagementPage {
         return driver.findElements(tableRows).size();
     }
 
+    /**
+     * Locates the specific employee row by the email shown in its
+     * "email-cell" column (EmployeeList.jsx renders {employee.email}
+     * there). Used to prove a given employee is actually present in the
+     * list - not just that the list has "some" rows.
+     */
+    private By rowByEmail(String email) {
+        return By.xpath(
+                "//div[contains(@class,'employee-list')]//table/tbody/tr" +
+                        "[.//td[contains(@class,'email-cell')][normalize-space()='" + email + "']]");
+    }
+
+    /**
+     * Genuinely waits (does not short-circuit) for a row containing the
+     * given email to appear in the Employee List. Because the list is
+     * populated exclusively from the Mock API response (App.jsx's
+     * fetchEmployees(), never from local/optimistic state), seeing this
+     * row confirms both "added in the React app" and "stored in the Mock
+     * API" - the row cannot exist here unless the GET that repopulated it
+     * returned this employee.
+     */
+    public boolean waitForEmployeeRowByEmail(String email) {
+        return wait.isDisplayed(rowByEmail(email));
+    }
+
+    /**
+     * Best-effort check for the "Employee added successfully!" toast,
+     * used as a secondary "API completion" signal alongside
+     * waitForEmployeeRowByEmail(). Not treated as the sole proof of
+     * success since react-hot-toast messages auto-dismiss quickly.
+     */
+    public boolean waitForAddSuccessToast() {
+        return wait.waitForToastMessage("Employee added successfully!", 8);
+    }
+
     // ----- Add Employee form -----
 
     public boolean isFormVisible() {
@@ -114,6 +149,7 @@ public class EmployeeManagementPage {
      */
     public void submitAndReturnToList() {
         wait.click(submitBtn);
+        wait.waitForPageLoad();
         wait.waitForVisible(employeeListSection);
     }
 

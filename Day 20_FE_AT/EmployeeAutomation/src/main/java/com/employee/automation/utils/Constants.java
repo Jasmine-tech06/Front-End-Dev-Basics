@@ -39,4 +39,10 @@ public final class Constants {
     // Employee login default password fallback, straight from Login.jsx:
     //   const expectedPassword = employee.password || "password";
     public static final String DEFAULT_EMPLOYEE_PASSWORD = "password";
+
+    // Mock API backend (src/services/employeeService.js -> API_URL), used
+    // to verify Add/Update Employee actually persisted server-side,
+    // independent of what the UI shows.
+    public static final String MOCK_API_EMPLOYEES_URL =
+            "https://6a4b3698f5eab0bb6b62577e.mockapi.io/Employees";
 }

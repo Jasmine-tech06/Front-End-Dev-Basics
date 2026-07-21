@@ -57,4 +57,27 @@ public final class TestDataUtils {
                 LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
         );
     }
+
+    /**
+     * Fixed dataset for the specific employee the Add Employee flow must
+     * create: Name "Arshad", Email "jarshj@gmail.com". Department is
+     * required by the real form validation (EmployeeForm.jsx
+     * handleSubmit), so a real, valid value is supplied for it and for the
+     * other supported-but-optional fields, exactly as a user filling out
+     * the form would.
+     */
+    public static EmployeeData arshadEmployee() {
+        return new EmployeeData(
+                "Arshad",
+                "EMP-ARSHAD-01",
+                "jarshj@gmail.com",
+                "+91 90000 11111",
+                "IT",
+                "QA Engineer",
+                "Automation Specialist",
+                "45000",
+                "Active",
+                LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        );
+    }
 }
